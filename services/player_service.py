@@ -7,14 +7,10 @@ def process_player_data(players):
         seasons = [s.season for s in player.seasons]
 
         last_three_seasons = player.seasons[-3:]
-        valid_two_percent = [s.twoPercent for s in last_three_seasons if s.twoPercent is not None]
-        valid_three_percent = [s.threePercent for s in last_three_seasons if s.threePercent is not None]
-
-        avg_two_percent = sum(valid_two_percent) / len(valid_two_percent) if valid_two_percent else 0
-        avg_three_percent = sum(valid_three_percent) / len(valid_three_percent) if valid_three_percent else 0
-
+        avg_two_percent = player.get_two_percent()
+        avg_three_percent = player.get_three_percent()
+        total_points = player.get_total_points()
         total_games = sum(s.games for s in player.seasons if s.games is not None)
-        total_points = sum(s.points for s in player.seasons if s.points is not None)
 
         player_data = {
             'playerName': player.playerName,

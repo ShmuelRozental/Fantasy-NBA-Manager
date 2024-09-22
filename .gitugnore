@@ -9,8 +9,8 @@ __pycache__/
 
 .idea/
 
-
 *.log
+*.db
 
 
 .DS_Store

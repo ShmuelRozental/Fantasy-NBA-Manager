@@ -20,7 +20,6 @@ app = create_app()
 
 
 with app.app_context():
-    db.drop_all()
     db.create_all()
 
     seasons = (2024, 2023, 2022)
@@ -29,8 +28,10 @@ with app.app_context():
         season_data = load_players_from_api(f'http://b8c40s8.143.198.70.30.sslip.io/api/PlayerDataTotals/query?season={season}&&pageSize=1000', season)
 
 
-app.register_blueprint(players)
-app.register_blueprint(teams)
+app.register_blueprint(players,url_prefix='/api/players')
+app.register_blueprint(teams, url_prefix='/api/teams')
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

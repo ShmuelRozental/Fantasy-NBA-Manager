@@ -8,4 +8,3 @@ class FantasyTeam(db.Model):
 
     players = db.relationship('Player', backref='fantasy_team', lazy=True)
 
-

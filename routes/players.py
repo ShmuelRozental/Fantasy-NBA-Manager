@@ -5,7 +5,7 @@ from services.player_service import process_player_data
 players = Blueprint('players', __name__)
 
 
-@players.route('/api/players', methods=['GET'])
+@players.route('/', methods=['GET'])
 def get_players():
     position = request.args.get('position')
     season = request.args.get('season')
